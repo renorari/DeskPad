@@ -14,7 +14,7 @@ final class PermissionGuideWindowController: NSWindowController {
             backing: .buffered,
             defer: false
         )
-        panel.title = "Screen Recording Permission"
+        panel.title = String(localized: "Screen Recording Permission")
         // Stay visible above System Settings while the user drags the icon over.
         panel.level = .floating
         panel.hidesOnDeactivate = false
@@ -25,30 +25,30 @@ final class PermissionGuideWindowController: NSWindowController {
     }
 
     private func makeContentView() -> NSView {
-        let titleLabel = NSTextField(labelWithString: "Allow DeskPad to record the screen")
+        let titleLabel = NSTextField(labelWithString: String(localized: "Allow DeskPad to record the screen"))
         titleLabel.font = .boldSystemFont(ofSize: 15)
 
-        let stepsLabel = NSTextField(wrappingLabelWithString: """
+        let stepsLabel = NSTextField(wrappingLabelWithString: String(localized: """
         1. Open System Settings.
         2. Drag the DeskPad icon below into the Screen Recording list.
         3. Reopen DeskPad.
 
         If DeskPad is already listed, turn it off and on again.
-        """)
+        """))
         stepsLabel.widthAnchor.constraint(equalToConstant: 320).isActive = true
 
         let iconView = AppIconDragView()
-        let iconCaption = NSTextField(labelWithString: "Drag me")
+        let iconCaption = NSTextField(labelWithString: String(localized: "Drag me"))
         iconCaption.textColor = .secondaryLabelColor
         iconCaption.font = .systemFont(ofSize: NSFont.smallSystemFontSize)
 
         let openSettingsButton = NSButton(
-            title: "Open System Settings",
+            title: String(localized: "Open System Settings"),
             target: self,
             action: #selector(openSystemSettings)
         )
         openSettingsButton.keyEquivalent = "\r"
-        let reopenButton = NSButton(title: "Reopen DeskPad", target: self, action: #selector(reopenApp))
+        let reopenButton = NSButton(title: String(localized: "Reopen DeskPad"), target: self, action: #selector(reopenApp))
         let buttons = NSStackView(views: [reopenButton, openSettingsButton])
 
         let stack = NSStackView(views: [titleLabel, stepsLabel, iconView, iconCaption, buttons])
@@ -93,7 +93,7 @@ private final class AppIconDragView: NSImageView, NSDraggingSource {
         super.init(frame: .zero)
         image = NSWorkspace.shared.icon(forFile: appURL.path)
         imageScaling = .scaleProportionallyUpOrDown
-        toolTip = "Drag into the Screen Recording list"
+        toolTip = String(localized: "Drag into the Screen Recording list")
         NSLayoutConstraint.activate([
             widthAnchor.constraint(equalToConstant: 96),
             heightAnchor.constraint(equalToConstant: 96),

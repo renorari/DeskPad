@@ -23,6 +23,7 @@
 		6DC044562801878100281728 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DC044552801878100281728 /* Assets.xcassets */; };
 		6DC04461280191EB00281728 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC04460280191EB00281728 /* main.swift */; };
 		6DF0A0022E9A000000D0E5A1 /* PermissionGuideWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0A0012E9A000000D0E5A1 /* PermissionGuideWindowController.swift */; };
+		6DF0A0052E9A000000D0E5A1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6DF0A0042E9A000000D0E5A1 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		6DC0445A2801878100281728 /* DeskPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeskPad.entitlements; sourceTree = "<group>"; };
 		6DC04460280191EB00281728 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		6DF0A0012E9A000000D0E5A1 /* PermissionGuideWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionGuideWindowController.swift; sourceTree = "<group>"; };
+		6DF0A0042E9A000000D0E5A1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				6DC04460280191EB00281728 /* main.swift */,
 				6D2F1485280C20C800A3A2E5 /* SubscriberViewController.swift */,
 				6DC044512801877F00281728 /* AppDelegate.swift */,
+				6DF0A0042E9A000000D0E5A1 /* Localizable.xcstrings */,
 				6D2F1483280C201B00A3A2E5 /* Backend */,
 				6D2F1484280C202700A3A2E5 /* Frontend */,
 				6D68E1B0287ABDAB00CD574A /* Helpers */,
@@ -202,6 +205,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 6DC044452801877F00281728;
 			packageReferences = (
@@ -222,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DC044562801878100281728 /* Assets.xcassets in Resources */,
+				6DF0A0052E9A000000D0E5A1 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,86 @@
+{
+  "sourceLanguage": "en",
+  "version": "1.0",
+  "strings": {
+    "1. Open System Settings.\n2. Drag the DeskPad icon below into the Screen Recording list.\n3. Reopen DeskPad.\n\nIf DeskPad is already listed, turn it off and on again.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. システム設定を開きます。\n2. 下の DeskPad アイコンを「画面収録」のリストにドラッグします。\n3. DeskPad を開き直します。\n\nすでにリストにある場合は、一度オフにしてからオンに戻してください。"
+          }
+        }
+      }
+    },
+    "Allow DeskPad to record the screen": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DeskPad に画面収録を許可してください"
+          }
+        }
+      }
+    },
+    "Drag into the Screen Recording list": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "「画面収録」のリストにドラッグ"
+          }
+        }
+      }
+    },
+    "Drag me": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ドラッグしてください"
+          }
+        }
+      }
+    },
+    "Open System Settings": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "システム設定を開く"
+          }
+        }
+      }
+    },
+    "Quit DeskPad": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DeskPad を終了"
+          }
+        }
+      }
+    },
+    "Reopen DeskPad": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DeskPad を開き直す"
+          }
+        }
+      }
+    },
+    "Screen Recording Permission": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "画面収録の許可"
+          }
+        }
+      }
+    }
+  }
+}

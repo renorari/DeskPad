@@ -51,7 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func makeMainMenu() -> NSMenu {
         let subMenu = NSMenu(title: "MainMenu")
         subMenu.addItem(NSMenuItem(
-            title: "Quit",
+            title: String(localized: "Quit DeskPad"),
             action: #selector(NSApp.terminate),
             keyEquivalent: "q"
         ))
