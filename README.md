@@ -34,11 +34,6 @@ Whenever you move your mouse cursor to the virtual display, DeskPad will highlig
 </h3>
 
 # Troubleshooting
-DeskPad may need screen recording permissions to display properly. Follow these steps:
+DeskPad needs screen recording permission to display the virtual screen. It asks for it on launch: click **Open System Settings**, enable DeskPad under **Privacy & Security** → **Screen Recording**, and reopen DeskPad when prompted.
 
-1. **Open System Settings** → **Privacy & Security** → **Screen Recording**
-2. **Enable DeskPad** by checking the box next to it
-3. **If DeskPad appears but isn't working:**
-   - Uncheck the DeskPad option
-   - Check it again to re-enable
-4. **Restart DeskPad** for changes to take effect
+If DeskPad is already enabled but the screen stays blank (common after updating), uncheck it and check it again, then reopen DeskPad.

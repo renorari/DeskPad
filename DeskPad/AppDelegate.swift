@@ -7,6 +7,7 @@ enum AppDelegateAction: Action {
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
+    private var permissionGuide: PermissionGuideWindowController?
 
     func applicationDidFinishLaunching(_: Notification) {
         window = makeWindow()
@@ -14,6 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.makeKeyAndOrderFront(nil)
 
         store.dispatch(AppDelegateAction.didFinishLaunching)
+
+        showPermissionGuideIfNeeded()
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
@@ -34,6 +37,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.styleMask.insert(.resizable)
         window.collectionBehavior.insert(.fullScreenNone)
         return window
+    }
+
+    private func showPermissionGuideIfNeeded() {
+        guard !CGPreflightScreenCaptureAccess() else {
+            return
+        }
+        let permissionGuide = PermissionGuideWindowController()
+        permissionGuide.showWindow(nil)
+        self.permissionGuide = permissionGuide
     }
 
     private func makeMainMenu() -> NSMenu {
