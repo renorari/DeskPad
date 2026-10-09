@@ -22,6 +22,7 @@
 		6DC044522801877F00281728 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC044512801877F00281728 /* AppDelegate.swift */; };
 		6DC044562801878100281728 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DC044552801878100281728 /* Assets.xcassets */; };
 		6DC04461280191EB00281728 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC04460280191EB00281728 /* main.swift */; };
+		6DF0A0022E9A000000D0E5A1 /* PermissionGuideWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0A0012E9A000000D0E5A1 /* PermissionGuideWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		6DC044552801878100281728 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DC0445A2801878100281728 /* DeskPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeskPad.entitlements; sourceTree = "<group>"; };
 		6DC04460280191EB00281728 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		6DF0A0012E9A000000D0E5A1 /* PermissionGuideWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionGuideWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				6D41B0A22879FB88007CEB2F /* Screen */,
+				6DF0A0032E9A000000D0E5A1 /* Permission */,
 			);
 			path = Frontend;
 			sourceTree = "<group>";
@@ -84,6 +87,14 @@
 				6D41B0A02879FABE007CEB2F /* MouseLocationState.swift */,
 			);
 			path = MouseLocation;
+			sourceTree = "<group>";
+		};
+		6DF0A0032E9A000000D0E5A1 /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				6DF0A0012E9A000000D0E5A1 /* PermissionGuideWindowController.swift */,
+			);
+			path = Permission;
 			sourceTree = "<group>";
 		};
 		6D41B0A22879FB88007CEB2F /* Screen */ = {
@@ -255,6 +266,7 @@
 				6D2F148E280C211E00A3A2E5 /* ScreenViewController.swift in Sources */,
 				6DC044522801877F00281728 /* AppDelegate.swift in Sources */,
 				6DC04461280191EB00281728 /* main.swift in Sources */,
+				6DF0A0022E9A000000D0E5A1 /* PermissionGuideWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +399,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = TYPC962S4N;
+				DEVELOPMENT_TEAM = XN6J7R27Z6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -397,7 +409,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.3.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stengo.DeskPad;
+				PRODUCT_BUNDLE_IDENTIFIER = net.renorari.apps.DeskPad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -413,7 +425,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = TYPC962S4N;
+				DEVELOPMENT_TEAM = XN6J7R27Z6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -423,7 +435,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.3.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stengo.DeskPad;
+				PRODUCT_BUNDLE_IDENTIFIER = net.renorari.apps.DeskPad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
