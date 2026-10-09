@@ -33,6 +33,11 @@ final class DisplayCapture: NSObject, SCStreamOutput, SCStreamDelegate {
         }
     }
 
+    /// Applies changed preferences to a running capture.
+    func reloadConfiguration() {
+        stream?.updateConfiguration(makeConfiguration()) { _ in }
+    }
+
     func stop() {
         isWanted = false
         stream?.stopCapture { _ in }
@@ -110,8 +115,8 @@ final class DisplayCapture: NSObject, SCStreamOutput, SCStreamDelegate {
         configuration.height = max(1, Int(outputSize.height))
         configuration.pixelFormat = kCVPixelFormatType_32BGRA
         configuration.colorSpaceName = CGColorSpace.sRGB
-        configuration.showsCursor = true
-        configuration.minimumFrameInterval = CMTime(value: 1, timescale: 60)
+        configuration.showsCursor = Preferences.showsCursor
+        configuration.minimumFrameInterval = CMTime(value: 1, timescale: CMTimeScale(Preferences.frameRate))
         configuration.queueDepth = 3
         return configuration
     }

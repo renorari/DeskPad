@@ -11,8 +11,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var captureStartObserver: NSObjectProtocol?
 
     func applicationDidFinishLaunching(_: Notification) {
-        window = makeWindow()
-        NSApplication.shared.mainMenu = makeMainMenu()
+        let screenController = ScreenViewController()
+        window = makeWindow(screenController: screenController)
+        NSApplication.shared.mainMenu = MainMenu.make(screenController: screenController)
         window.makeKeyAndOrderFront(nil)
 
         store.dispatch(AppDelegateAction.didFinishLaunching)
@@ -24,17 +25,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
 
-    private func makeWindow() -> NSWindow {
-        let viewController = ScreenViewController()
-        let window = NSWindow(contentViewController: viewController)
-        window.delegate = viewController
+    private func makeWindow(screenController: ScreenViewController) -> NSWindow {
+        let window = NSWindow(contentViewController: screenController)
+        window.delegate = screenController
         window.title = "DeskPad"
         window.titlebarAppearsTransparent = true
         window.isMovableByWindowBackground = true
         window.titleVisibility = .hidden
         window.backgroundColor = .white
         window.contentMinSize = CGSize(width: 400, height: 300)
-        window.contentMaxSize = CGSize(width: 5120, height: 2160)
+        window.contentMaxSize = CGSize(width: 7680, height: 4320)
         window.styleMask.insert(.resizable)
         window.collectionBehavior.insert(.fullScreenNone)
         return window
@@ -65,19 +65,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NotificationCenter.default.removeObserver(captureStartObserver)
         }
         captureStartObserver = nil
-    }
-
-    private func makeMainMenu() -> NSMenu {
-        let subMenu = NSMenu(title: "MainMenu")
-        subMenu.addItem(NSMenuItem(
-            title: String(localized: "Quit DeskPad"),
-            action: #selector(NSApp.terminate),
-            keyEquivalent: "q"
-        ))
-        let mainMenuItem = NSMenuItem()
-        mainMenuItem.submenu = subMenu
-        let mainMenu = NSMenu()
-        mainMenu.items = [mainMenuItem]
-        return mainMenu
     }
 }

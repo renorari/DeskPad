@@ -2,6 +2,16 @@
   "sourceLanguage": "en",
   "version": "1.0",
   "strings": {
+    "%lld fps": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld fps"
+          }
+        }
+      }
+    },
     "1. Open System Settings.\n2. Drag the DeskPad icon below into the Screen Recording list.\n3. Reopen DeskPad.\n\nIf DeskPad is already listed, turn it off and on again.": {
       "localizations": {
         "ja": {
@@ -12,12 +22,52 @@
         }
       }
     },
+    "About DeskPad": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DeskPad について"
+          }
+        }
+      }
+    },
     "Allow DeskPad to record the screen": {
       "localizations": {
         "ja": {
           "stringUnit": {
             "state": "translated",
             "value": "DeskPad に画面収録を許可してください"
+          }
+        }
+      }
+    },
+    "Bring All to Front": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "すべてを手前に移動"
+          }
+        }
+      }
+    },
+    "Bring to Front When Cursor Enters": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カーソルが入ったら手前に表示"
+          }
+        }
+      }
+    },
+    "Display": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ディスプレイ"
           }
         }
       }
@@ -38,6 +88,66 @@
           "stringUnit": {
             "state": "translated",
             "value": "ドラッグしてください"
+          }
+        }
+      }
+    },
+    "Frame Rate": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "フレームレート"
+          }
+        }
+      }
+    },
+    "Hide DeskPad": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DeskPad を非表示"
+          }
+        }
+      }
+    },
+    "Hide Others": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ほかを非表示"
+          }
+        }
+      }
+    },
+    "Keep on Top": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常に手前に表示"
+          }
+        }
+      }
+    },
+    "Minimize": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "しまう"
+          }
+        }
+      }
+    },
+    "No Resolutions Available": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "利用できる解像度がありません"
           }
         }
       }
@@ -72,12 +182,72 @@
         }
       }
     },
+    "Resolution": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解像度"
+          }
+        }
+      }
+    },
+    "Rotate": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "回転"
+          }
+        }
+      }
+    },
     "Screen Recording Permission": {
       "localizations": {
         "ja": {
           "stringUnit": {
             "state": "translated",
             "value": "画面収録の許可"
+          }
+        }
+      }
+    },
+    "Show All": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "すべてを表示"
+          }
+        }
+      }
+    },
+    "Show Cursor": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カーソルを表示"
+          }
+        }
+      }
+    },
+    "Window": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ウインドウ"
+          }
+        }
+      }
+    },
+    "Zoom": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拡大/縮小"
           }
         }
       }
