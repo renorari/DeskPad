@@ -7,14 +7,21 @@ enum ScreenViewAction: Action {
 
 class ScreenViewController: SubscriberViewController<ScreenViewData>, NSWindowDelegate {
     private let display = CGVirtualDisplay.makeDeskPadDisplay()
-    private var stream: CGDisplayStream?
+    private let screenView = MetalScreenView()
+    private lazy var capture = DisplayCapture(displayID: display.displayID) { [screenView] pixelBuffer in
+        screenView.render(pixelBuffer)
+    }
+
+    private var pendingCaptureUpdate: DispatchWorkItem?
     private var isWindowHighlighted = false
     private var previousResolution: CGSize?
     private var previousScaleFactor: CGFloat?
 
     override func loadView() {
-        view = NSView()
-        view.wantsLayer = true
+        view = screenView
+        screenView.onDrawableSizeChange = { [weak self] _ in
+            self?.scheduleCaptureUpdate()
+        }
         view.addGestureRecognizer(NSClickGestureRecognizer(target: self, action: #selector(didClickOnScreen)))
     }
 
@@ -38,7 +45,9 @@ class ScreenViewController: SubscriberViewController<ScreenViewData>, NSWindowDe
             previousResolution = viewData.resolution
             previousScaleFactor = viewData.scaleFactor
             resizeWindow(to: viewData.resolution)
-            startStream(resolution: viewData.resolution, scaleFactor: viewData.scaleFactor)
+            // The display itself changed, so reconnect rather than resize the stream.
+            capture.stop()
+            updateCapture()
         }
     }
 
@@ -60,24 +69,41 @@ class ScreenViewController: SubscriberViewController<ScreenViewData>, NSWindowDe
         center(window, on: hostScreen(for: window))
     }
 
-    private func startStream(resolution: CGSize, scaleFactor: CGFloat) {
-        stream?.stop()
-        stream = CGDisplayStream(
-            dispatchQueueDisplay: display.displayID,
-            outputWidth: Int(resolution.width * scaleFactor),
-            outputHeight: Int(resolution.height * scaleFactor),
-            pixelFormat: Int32(kCVPixelFormatType_32BGRA),
-            properties: [
-                CGDisplayStream.showCursor: true,
-            ] as CFDictionary,
-            queue: .main,
-            handler: { [weak self] _, _, frameSurface, _ in
-                if let surface = frameSurface {
-                    self?.view.layer?.contents = surface
-                }
-            }
-        )
-        stream?.start()
+    // MARK: - Capture
+
+    /// Live resizing changes the drawable size every frame, so stream updates are batched.
+    private func scheduleCaptureUpdate() {
+        pendingCaptureUpdate?.cancel()
+        let update = DispatchWorkItem { [weak self] in
+            self?.updateCapture()
+        }
+        pendingCaptureUpdate = update
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15, execute: update)
+    }
+
+    /// Captures only as many pixels as the window shows, and nothing while it is hidden.
+    private func updateCapture() {
+        guard
+            let resolution = previousResolution,
+            let scaleFactor = previousScaleFactor,
+            let window = view.window,
+            window.occlusionState.contains(.visible)
+        else {
+            capture.stop()
+            return
+        }
+        let drawableSize = screenView.drawableSize
+        guard drawableSize.width > 0, drawableSize.height > 0 else {
+            return
+        }
+        capture.start(outputSize: CGSize(
+            width: min(drawableSize.width, resolution.width * scaleFactor),
+            height: min(drawableSize.height, resolution.height * scaleFactor)
+        ))
+    }
+
+    func windowDidChangeOcclusionState(_: Notification) {
+        updateCapture()
     }
 
     // MARK: - Keeping the window off the virtual display

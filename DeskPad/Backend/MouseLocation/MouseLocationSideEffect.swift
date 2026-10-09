@@ -17,6 +17,8 @@ func mouseLocationSideEffect() -> SideEffect {
                 let isWithinScreen = screenContainingMouse?.displayID == getState()?.screenConfigurationState.displayID
                 dispatch(MouseLocationAction.located(isWithinScreen: isWithinScreen))
             }
+            // Lets macOS coalesce the wakeups with other timers.
+            timer?.tolerance = 0.1
         }
 
         guard

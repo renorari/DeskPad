@@ -8,6 +8,7 @@ enum AppDelegateAction: Action {
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
     private var permissionGuide: PermissionGuideWindowController?
+    private var captureStartObserver: NSObjectProtocol?
 
     func applicationDidFinishLaunching(_: Notification) {
         window = makeWindow()
@@ -46,6 +47,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let permissionGuide = PermissionGuideWindowController()
         permissionGuide.showWindow(nil)
         self.permissionGuide = permissionGuide
+
+        // Capture starts on its own once permission is granted, so the guide is no longer needed.
+        captureStartObserver = NotificationCenter.default.addObserver(
+            forName: .displayCaptureDidStart,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.closePermissionGuide()
+        }
+    }
+
+    private func closePermissionGuide() {
+        permissionGuide?.close()
+        permissionGuide = nil
+        if let captureStartObserver {
+            NotificationCenter.default.removeObserver(captureStartObserver)
+        }
+        captureStartObserver = nil
     }
 
     private func makeMainMenu() -> NSMenu {
