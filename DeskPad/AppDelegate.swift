@@ -9,11 +9,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
 
     func applicationDidFinishLaunching(_: Notification) {
+        window = makeWindow()
+        NSApplication.shared.mainMenu = makeMainMenu()
+        window.makeKeyAndOrderFront(nil)
+
+        store.dispatch(AppDelegateAction.didFinishLaunching)
+    }
+
+    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
+        return true
+    }
+
+    private func makeWindow() -> NSWindow {
         let viewController = ScreenViewController()
-        window = NSWindow(contentViewController: viewController)
+        let window = NSWindow(contentViewController: viewController)
         window.delegate = viewController
         window.title = "DeskPad"
-        window.makeKeyAndOrderFront(nil)
         window.titlebarAppearsTransparent = true
         window.isMovableByWindowBackground = true
         window.titleVisibility = .hidden
@@ -22,24 +33,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.contentMaxSize = CGSize(width: 5120, height: 2160)
         window.styleMask.insert(.resizable)
         window.collectionBehavior.insert(.fullScreenNone)
+        return window
+    }
 
-        let mainMenu = NSMenu()
-        let mainMenuItem = NSMenuItem()
+    private func makeMainMenu() -> NSMenu {
         let subMenu = NSMenu(title: "MainMenu")
-        let quitMenuItem = NSMenuItem(
+        subMenu.addItem(NSMenuItem(
             title: "Quit",
             action: #selector(NSApp.terminate),
             keyEquivalent: "q"
-        )
-        subMenu.addItem(quitMenuItem)
+        ))
+        let mainMenuItem = NSMenuItem()
         mainMenuItem.submenu = subMenu
+        let mainMenu = NSMenu()
         mainMenu.items = [mainMenuItem]
-        NSApplication.shared.mainMenu = mainMenu
-
-        store.dispatch(AppDelegateAction.didFinishLaunching)
-    }
-
-    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
-        return true
+        return mainMenu
     }
 }
